@@ -40,7 +40,7 @@ function addItemToCart(title, price, imageSrc) {
                 <div class="cart-quantity cart-column">
                     <input type="number" value="1" class="cart-quantity-input" min="1">
                     <button class="btn btn-danger" type="button">Удалить</button>
-                </div>`;
+                </div> <hr>`;
     cartRow.innerHTML = cartRowContents;
 
     cartRow
