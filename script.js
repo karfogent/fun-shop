@@ -15,11 +15,11 @@ function addToCartClicked(event) {
 }
 
 function addItemToCart(title, price, imageSrc) {
-    console.log("Добавляем товар:", title, price, imageSrc);
+    // console.log("Добавляем товар:", title, price, imageSrc);
     const cartItems = document.querySelector(".cart-items");
 
     const cartItemNames = cartItems.querySelectorAll(".cart-item-title")
-    console.log(cartItemNames);
+    // console.log(cartItemNames);
     for (let i = 0; i < cartItemNames.length; i++) {
         if (cartItemNames[i].innerText == title) {
             alert("Этот товар уже в корзине!")
@@ -53,16 +53,17 @@ function addItemToCart(title, price, imageSrc) {
 }
 
 function removeCartItem(event) {
-    console.log("Удаляем элемент.");
-    updateCartTotal();
-    console.log(event.target.parentElement.parentElement)
+    // console.log("Удаляем элемент.");
+    // console.log(event)
+    // console.log(event.target.parentElement.parentElement)
     event.target.parentElement.parentElement.remove();
+    updateCartTotal();
 }
 
 function quantityChanged(event) {
-    console.log("Изменяем количество товаров.");
+    // console.log("Изменяем количество товаров.");
     let input = event.target;
-    if(isNaN(input.value) || input.value <=0) {
+    if (isNaN(input.value) || input.value <= 0) {
         input.value = 1;
     }
     updateCartTotal();
@@ -70,6 +71,20 @@ function quantityChanged(event) {
 
 function updateCartTotal() {
     const cartRows = document.querySelectorAll(".cart-items .cart-row")
-    console.log(cartRows)
-    console.log("Обновляем итоговую сумму");
+    // console.log(cartRows)
+    // console.log("Обновляем итоговую сумму");
+    let totalPrice = 0;
+    for (row of cartRows) {
+        let priceElement = row.querySelector('.cart-price');
+        let quantityElement = row.querySelector('.cart-quantity-input');
+        let price = parseFloat(priceElement.innerText);
+        let quantity = parseInt(quantityElement.value);
+        totalPrice += price * quantity;
+        // console.log(price)
+        // console.log(quantity)
+    }
+    console.log(totalPrice)
+    totalElement = document.querySelector('.cart-total-price').innerText = totalPrice + ' руб';
 }
+
+// parseFloat - выражение числа из строки // 

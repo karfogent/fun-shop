@@ -1,3 +1,7 @@
+html{
+    scroll-behavior: smooth;
+}
+
 :root{
     --somegraycolor: #333;
 }
@@ -203,6 +207,7 @@ footer{
     height: 80px;
     background-color: aquamarine;
     color: var(--somegraycolor);
+    font-family: 'Courier New', Courier, monospace;
     text-align: center;
     padding: 1.5rem;
     font-weight: bolder;
